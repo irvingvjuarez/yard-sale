@@ -1,4 +1,5 @@
 $border-color: #BBBBBB;
+$contrast-color: #5BB166;
 
 *{
   margin: 0;
@@ -21,6 +22,12 @@ body{
   background-color: transparent;
 }
 
+@import "./Pages/Home/Home.scss";
+
 @import "./Containers/Header/Header.scss";
 @import "./Containers/Filter/Filter.scss";
+
 @import "./Components/SearchInput/SearchInput.scss";
+@import "./Components/ButtonCTA/ButtonCTA.scss";
+@import "./Components/Item/Item.scss";
+@import "./Components/Rating/Rating.scss";
