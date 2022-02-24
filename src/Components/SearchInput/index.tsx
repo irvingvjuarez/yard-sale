@@ -1,10 +1,7 @@
 import React from "react";
 
 import Search from "../../Assets/Icons/search.png";
-
-interface SearchInputInterface {
-  setIsSearching: React.Dispatch<React.SetStateAction<boolean>>
-}
+import { SearchInputInterface } from "../../Interfaces";
 
 export const SearchInput: React.FC<SearchInputInterface> = ({setIsSearching}): JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null)

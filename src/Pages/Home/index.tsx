@@ -1,5 +1,9 @@
-export const Home = () => {
+import { Filter } from "../../Containers/Filter";
+
+export const Home: React.FC = (): JSX.Element => {
   return(
-    <h2>I am the Home</h2>
+    <section className="Home">
+      <Filter />
+    </section>
   )
 }
