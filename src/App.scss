@@ -1,5 +1,25 @@
+$border-color: #BBBBBB;
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 62.5%;
+}
+.App{
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 1.6rem;
+}
+
+@mixin buttonPrimary {
+  border: none;
+  background-color: transparent;
+}
+
+@import "./Containers/Header/Header.scss";
+@import "./Components/SearchInput/SearchInput.scss";

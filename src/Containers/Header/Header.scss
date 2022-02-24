@@ -1,0 +1,18 @@
+.Header{
+  width: 100%;
+  padding-block: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__buttons-container{
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    button{
+      @include buttonPrimary;
+      margin: 0 7px;
+    }
+  }
+}
