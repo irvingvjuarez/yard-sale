@@ -3,13 +3,14 @@ import { Layout } from "./Layout";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Home } from "./Pages/Home";
 import { Menu } from "./Pages/Menu";
+import { Cart } from "./Pages/Cart";
 
 // utils
 import { initialState, reducer } from "./globalState";
 
 // css
 import './App.scss';
-import { StateInterface } from './globalTypes';
+import { ActionType, StateInterface } from './globalTypes';
 
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
@@ -34,13 +35,18 @@ function App(): JSX.Element {
             <Route path="/" element={
               <Home
                 state={state as StateInterface}
-                dispatch={dispatch as React.DispatchWithoutAction}
+                dispatch={dispatch as React.Dispatch<ActionType>}
               />
             }/>
             <Route path="/menu" element={
               <Menu 
                 state={state as StateInterface}
-                dispatch={dispatch as React.DispatchWithoutAction}
+              />
+            }/>
+            <Route path='/shopping-cart' element={
+              <Cart 
+                state={state as StateInterface}
+                dispatch={dispatch as React.Dispatch<ActionType>}
               />
             }/>
           </Routes>

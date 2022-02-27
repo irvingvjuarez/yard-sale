@@ -18,9 +18,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
   const currentPathname: string = window.location.pathname
-  // let pathnameMatches: Array<string>;
+  let title: string = "";
   if(currentPathname.length > 1){
-    console.log( currentPathname.match(locationRegex) )
+    title = currentPathname.match(locationRegex)?.join(" ") as string
   }
 
   const renderMainHeader = (): JSX.Element => {
@@ -63,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
           />
 
           <h2 className="Header__title">
-            Menu
+            {title}
           </h2>
         </React.Fragment>
       ) : (

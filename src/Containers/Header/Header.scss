@@ -14,11 +14,14 @@
 
   &__title{
     position: absolute;
+    width: 100%;
+    text-align: center;
     right: 50%;
     bottom: 50%;
     transform: translate(50%, 50%);
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 0.5px;
+    text-transform: capitalize;
   }
 }

@@ -3,7 +3,7 @@ import React from "react";
 import { Filter } from "../../Containers/Filter";
 import { Item } from "../../Components/Item";
 import { Skeleton } from "../../Containers/Skeleton";
-import { PageProps } from "../../globalTypes";
+import { ActionType, PageProps } from "../../globalTypes";
 
 export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
 
@@ -11,7 +11,7 @@ export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
     if(state.filteredItems.length){
       return(
         <React.Fragment>
-          <Filter categories={state.categories} dispatch={dispatch} />
+          <Filter categories={state.categories} dispatch={dispatch as React.Dispatch<ActionType>} />
 
           <section className="Home__items">
             {state.filteredItems.map(item => (
@@ -23,7 +23,7 @@ export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
                 price={item.price}
                 rate={item.rating.rate}
                 image={item.image}
-                dispatch={dispatch}
+                dispatch={dispatch as React.Dispatch<ActionType>}
                 added={item.added as boolean}
               />
             ))}
@@ -34,7 +34,7 @@ export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
       if(state.searching){
         return(
           <React.Fragment>
-            <Filter categories={state.categories} dispatch={dispatch} />
+            <Filter categories={state.categories} dispatch={dispatch as React.Dispatch<ActionType>} />
             <span className="Home__no-found">No items found</span>
           </React.Fragment>
         )
