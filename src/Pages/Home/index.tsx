@@ -3,6 +3,7 @@ import React from "react";
 import { Filter } from "../../Containers/Filter";
 import { Item } from "../../Components/Item";
 import { HomeProps } from "./types";
+import { Skeleton } from "../../Containers/Skeleton";
 
 export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
 
@@ -38,7 +39,7 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
           </React.Fragment>
         )
       }else{
-        return(<h2>Loading...</h2>)
+        return(<Skeleton />)
       }
     }
   }

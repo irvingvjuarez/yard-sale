@@ -14,13 +14,13 @@ function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
 
   React.useEffect(() => {
-    try{
-      fetch('https://fakestoreapi.com/products')
-      .then(res => res.json())
-      .then(data => dispatch({ type: "ADD_INITIAL_ITEMS", payload: data }))
-    }catch(err){
-      dispatch({ type: "ERROR" })
-    }
+    // try{
+    //   fetch('https://fakestoreapi.com/products')
+    //   .then(res => res.json())
+    //   .then(data => dispatch({ type: "ADD_INITIAL_ITEMS", payload: data }))
+    // }catch(err){
+    //   dispatch({ type: "ERROR" })
+    // }
   }, [])
 
   return (

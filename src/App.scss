@@ -26,9 +26,11 @@ body{
 
 @import "./Containers/Header/Header.scss";
 @import "./Containers/Filter/Filter.scss";
+@import "./Containers/Skeleton/Skeleton.scss";
 
 @import "./Components/SearchInput/SearchInput.scss";
 @import "./Components/ButtonCTA/ButtonCTA.scss";
 @import "./Components/Item/Item.scss";
 @import "./Components/Rating/Rating.scss";
 @import "./Components/ButtonSmall/ButtonSmall.scss";
+@import "./Components/Loader/Loader.scss";
