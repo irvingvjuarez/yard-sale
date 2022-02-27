@@ -27,10 +27,10 @@ function App(): JSX.Element {
 
   return (
     <section className="App">
-      <Layout 
-        dispatch={dispatch}
-        notificationsFlag={state.shoppingCart.length}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <Layout 
+          dispatch={dispatch}
+          notificationsFlag={state.shoppingCart.length}>
           <Routes>
             <Route path="/" element={
               <Home
@@ -50,8 +50,8 @@ function App(): JSX.Element {
               />
             }/>
           </Routes>
-        </BrowserRouter>
-      </Layout>
+        </Layout>
+      </BrowserRouter>
     </section>
   );
 }

@@ -6,6 +6,7 @@ import Search from "../../Assets/Icons/search.png";
 import ArrowLeft from "../../Assets/Icons/arrow-left.svg";
 
 import { HeaderProps } from "./types";
+import { To } from "react-router-dom";
 
 // components
 import { SearchInput } from "../../Components/SearchInput";
@@ -36,10 +37,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
           </a>
 
           <nav className="Header__buttons-container">
-            <ButtonSmall isLink={false} source={Search} onclick={handleSearch} />
+            <ButtonSmall source={Search} onclick={handleSearch} />
 
-            <ButtonSmall 
-              isLink={true}
+            <ButtonSmall
               to="/menu"
               source={Menu}
               notificationsFlag={notificationsFlag} 
@@ -56,8 +56,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
       {currentPathname.length > 1 ? (
         <React.Fragment>
           <ButtonSmall
-            isLink={true}
-            to="/"
+            to={-1 as To}
             source={ArrowLeft}
             isCTA={true}
           />
