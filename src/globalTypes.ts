@@ -16,6 +16,7 @@ export interface ItemInterface{
 export interface StateInterface{
   items: Array<ItemInterface>,
   filteredItems: Array<ItemInterface>,
+  shoppingCart: Array<ItemInterface>,
   searching: string,
   categories: Array<string>,
   error: boolean,
@@ -24,5 +25,5 @@ export interface StateInterface{
 
 export type ActionType = {
   type: string,
-  payload?: ItemInterface[] | string
+  payload?: ItemInterface[] | string | number
 }

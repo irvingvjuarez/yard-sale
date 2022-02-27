@@ -4,6 +4,7 @@ export const initialState = (): StateInterface => {
   return {
     items: [],
     filteredItems: [],
+    shoppingCart: [],
     categories: ["All items"],
     searching: "",
     error: false,
@@ -15,6 +16,12 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   const { type, payload } = action
 
   switch(type){
+    case "ADD_TO_CART":
+      let newCartItem: ItemInterface | undefined = state.items.find(item => item.id === payload)
+      state.shoppingCart = newCartItem ? [...state.shoppingCart, newCartItem] : state.shoppingCart
+      return{
+        ...state
+      }
     case "SEARCH":
       state.filteredItems = state.items.filter(item => {
         let searching: string = payload as string

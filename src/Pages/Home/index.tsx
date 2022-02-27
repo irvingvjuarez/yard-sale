@@ -15,12 +15,14 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
           <section className="Home__items">
             {state.filteredItems.map(item => (
               <Item 
-                key={item.id} 
+                key={item.id}
+                id={item.id}
                 name={item.title} 
                 category={item.category} 
                 price={item.price}
                 rate={item.rating.rate}
                 image={item.image}
+                dispatch={dispatch}
               />
             ))}
           </section>
