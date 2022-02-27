@@ -5,11 +5,12 @@ import { Item } from "../../Components/Item";
 import { HomeProps } from "./types";
 
 export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
+
   const renderContent = (): JSX.Element => {
     if(state.items.length){
       return(
         <React.Fragment>
-          <Filter />
+          <Filter categories={state.categories} />
           <section className="Home__items">
             {state.items.map(item => (
               <Item 

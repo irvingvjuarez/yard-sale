@@ -8,7 +8,7 @@ import { initialState, reducer } from "./globalState";
 
 // css
 import './App.scss';
-import { ActionType, StateInterface } from './globalTypes';
+import { ActionType, StateInterface, ItemInterface } from './globalTypes';
 
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())

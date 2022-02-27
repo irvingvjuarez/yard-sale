@@ -3,6 +3,7 @@ import { StateInterface, ActionType, ItemInterface } from "./globalTypes"
 export const initialState = (): StateInterface => {
   return {
     items: [],
+    categories: ["All items"],
     error: false,
     loading: true
   }
@@ -13,6 +14,12 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
 
   switch(type){
     case "ADD_INITIAL_ITEMS":
+      payload?.forEach((product: ItemInterface) => {
+        if(!state.categories.includes(product.category)){
+          state.categories.push(product.category)
+        }
+      })
+
       return {
         ...state,
         items: payload as ItemInterface[],
