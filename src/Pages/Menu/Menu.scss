@@ -1,0 +1,27 @@
+.Menu{
+  position: absolute;
+  left: 0;
+  width: 100vw;
+  background-color: $clear-color;
+
+  a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto;
+    padding-block: 15px;
+    text-decoration: none;
+  }
+
+  &__title{
+    font-size: 1.3rem;
+    color: black;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  span{
+    transform: rotate(-180deg);
+  }
+}

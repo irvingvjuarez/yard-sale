@@ -1,0 +1,1 @@
+export const locationRegex = new RegExp(/\w{1,}/)

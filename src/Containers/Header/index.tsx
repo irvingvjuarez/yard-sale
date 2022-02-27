@@ -11,10 +11,17 @@ import { HeaderProps } from "./types";
 import { SearchInput } from "../../Components/SearchInput";
 import { ButtonSmall } from "../../Components/ButtonSmall";
 
+// constants
+import { locationRegex } from "../../constants";
+
 export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): JSX.Element => {
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
   const currentPathname: string = window.location.pathname
+  // let pathnameMatches: Array<string>;
+  if(currentPathname.length > 1){
+    console.log( currentPathname.match(locationRegex) )
+  }
 
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
