@@ -2,5 +2,6 @@ import React from "react";
 import { ActionType } from "../../globalTypes"
 
 export interface HeaderProps{
-  dispatch: React.Dispatch<ActionType>
+  dispatch: React.Dispatch<ActionType>;
+  notificationsFlag: number
 }

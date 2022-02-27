@@ -10,7 +10,7 @@ import { HeaderProps } from "./types";
 import { SearchInput } from "../../Components/SearchInput";
 import { ButtonSmall } from "../../Components/ButtonSmall";
 
-export const Header: React.FC<HeaderProps> = ({ dispatch }): JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): JSX.Element => {
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
 
@@ -27,17 +27,13 @@ export const Header: React.FC<HeaderProps> = ({ dispatch }): JSX.Element => {
           <nav className="Header__buttons-container">
             <ButtonSmall isLink={false} source={Search} onclick={handleSearch} />
 
-            <ButtonSmall isLink={true} to="#" source={Menu} />
-
-            {/* <button onClick={handleSearch} >
-              <img src={Search} alt="" />
-            </button> */}
-
-            {/* <button>
-              <a href="#">
-                <img src={Menu} alt="" />
-              </a>
-            </button> */}
+            <ButtonSmall 
+              isLink={true}
+              to="#"
+              source={Menu}
+              notificationsFlag={notificationsFlag} 
+            />
+            
           </nav>
         </React.Fragment>
       )}

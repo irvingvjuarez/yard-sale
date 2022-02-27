@@ -13,8 +13,6 @@ import { StateInterface } from './globalTypes';
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
 
-  console.log(state.shoppingCart)
-
   React.useEffect(() => {
     try{
       fetch('https://fakestoreapi.com/products')
@@ -27,7 +25,9 @@ function App(): JSX.Element {
 
   return (
     <section className="App">
-      <Layout dispatch={dispatch}>
+      <Layout 
+        dispatch={dispatch}
+        notificationsFlag={state.shoppingCart.length}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home state={state as StateInterface} dispatch={dispatch as React.DispatchWithoutAction} />} />
