@@ -14,11 +14,24 @@ export const initialState = (): StateInterface => {
 
 export function reducer(state: StateInterface, action: ActionType): StateInterface{
   const { type, payload } = action
+  let index: number | undefined;
+
+  const getIndex = () => {
+    return state.items.findIndex(item => item.id === payload)
+  }
 
   switch(type){
+    case "REMOVE":
+      index = getIndex()
+      state.shoppingCart.splice(index, 1)
+      state.items[index].added = undefined;
+
+      return{
+        ...state
+      }
     case "ADD_TO_CART":
-      const index: number | undefined = state.items.findIndex(item => item.id === payload)
-      const newShoppingCart = index >= 0 ? [...state.shoppingCart, state.items[index]] : state.shoppingCart
+      index = getIndex()
+      const newShoppingCart: ItemInterface[] = index >= 0 ? [...state.shoppingCart, state.items[index]] : state.shoppingCart
       state.items[index].added = true;
       
       return{

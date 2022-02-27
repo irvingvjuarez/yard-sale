@@ -13,6 +13,8 @@ import { StateInterface } from './globalTypes';
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
 
+  console.log(state.shoppingCart)
+
   React.useEffect(() => {
     try{
       fetch('https://fakestoreapi.com/products')
