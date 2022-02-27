@@ -8,6 +8,7 @@ import { HeaderProps } from "./types";
 
 // components
 import { SearchInput } from "../../Components/SearchInput";
+import { ButtonSmall } from "../../Components/ButtonSmall";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch }): JSX.Element => {
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
@@ -24,15 +25,19 @@ export const Header: React.FC<HeaderProps> = ({ dispatch }): JSX.Element => {
           </a>
 
           <nav className="Header__buttons-container">
-            <button onClick={handleSearch} >
-              <img src={Search} alt="" />
-            </button>
+            <ButtonSmall isLink={false} source={Search} onclick={handleSearch} />
 
-            <button>
+            <ButtonSmall isLink={true} to="#" source={Menu} />
+
+            {/* <button onClick={handleSearch} >
+              <img src={Search} alt="" />
+            </button> */}
+
+            {/* <button>
               <a href="#">
                 <img src={Menu} alt="" />
               </a>
-            </button>
+            </button> */}
           </nav>
         </React.Fragment>
       )}

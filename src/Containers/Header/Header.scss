@@ -9,10 +9,5 @@
     height: 100%;
     display: flex;
     align-items: center;
-
-    button{
-      @include buttonPrimary;
-      margin: 0 7px;
-    }
   }
 }
