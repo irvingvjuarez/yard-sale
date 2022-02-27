@@ -7,7 +7,7 @@ import { HomeProps } from "./types";
 export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
 
   const renderContent = (): JSX.Element => {
-    if(state.items.length){
+    if(state.filteredItems.length){
       return(
         <React.Fragment>
           <Filter categories={state.categories} dispatch={dispatch} />
@@ -27,7 +27,16 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
         </React.Fragment>
       )
     }else{
-      return(<h2>Loading...</h2>)
+      if(state.searching){
+        return(
+          <React.Fragment>
+            <Filter categories={state.categories} dispatch={dispatch} />
+            <span className="Home__no-found">No items found</span>
+          </React.Fragment>
+        )
+      }else{
+        return(<h2>Loading...</h2>)
+      }
     }
   }
 

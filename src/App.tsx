@@ -25,7 +25,7 @@ function App(): JSX.Element {
 
   return (
     <section className="App">
-      <Layout>
+      <Layout dispatch={dispatch}>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home state={state as StateInterface} dispatch={dispatch as React.DispatchWithoutAction} />} />

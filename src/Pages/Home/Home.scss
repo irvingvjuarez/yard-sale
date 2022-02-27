@@ -1,6 +1,13 @@
 .Home{
   padding-bottom: 30px;
 
+  &__no-found{
+    display: block;
+    text-align: center;
+    padding-block: 40px;
+    font-size: 1.6rem;
+  }
+
   &__items{
     display: grid;
     grid-template-columns: repeat(1, 1fr);

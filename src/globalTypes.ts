@@ -16,6 +16,7 @@ export interface ItemInterface{
 export interface StateInterface{
   items: Array<ItemInterface>,
   filteredItems: Array<ItemInterface>,
+  searching: string,
   categories: Array<string>,
   error: boolean,
   loading: boolean

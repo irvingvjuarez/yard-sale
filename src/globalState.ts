@@ -5,6 +5,7 @@ export const initialState = (): StateInterface => {
     items: [],
     filteredItems: [],
     categories: ["All items"],
+    searching: "",
     error: false,
     loading: true
   }
@@ -14,6 +15,16 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   const { type, payload } = action
 
   switch(type){
+    case "SEARCH":
+      state.filteredItems = state.items.filter(item => {
+        let searching: string = payload as string
+        return item.title.toLowerCase().includes(searching.toLowerCase())
+      })
+
+      return{
+        ...state,
+        searching: payload as string
+      }
     case "FILTER":
       state.filteredItems = payload === "All items" ? state.items : state.items.filter(item => item.category === payload)
       return{
