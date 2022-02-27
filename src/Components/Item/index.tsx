@@ -9,7 +9,8 @@ export const Item: React.FC<ItemProps> = ({
   price,
   rate,
   image,
-  dispatch
+  dispatch,
+  added
 }): JSX.Element => {
   return(
     <div className="Item">
@@ -25,7 +26,7 @@ export const Item: React.FC<ItemProps> = ({
 
       <div className="Item__footer">
         <Rating content={rate} />
-        <ButtonCTA content="Add to cart" ItemId={id} dispatch={dispatch} />
+        <ButtonCTA ItemId={id} dispatch={dispatch} added={added} />
       </div>
     </div>
   )

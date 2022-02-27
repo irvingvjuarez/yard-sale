@@ -11,6 +11,7 @@ export interface ItemInterface{
   price: number;
   rating: RatingInterface;
   title: string;
+  added?: boolean
 }
 
 export interface StateInterface{

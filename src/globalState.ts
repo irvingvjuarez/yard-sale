@@ -17,10 +17,13 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
 
   switch(type){
     case "ADD_TO_CART":
-      let newCartItem: ItemInterface | undefined = state.items.find(item => item.id === payload)
-      state.shoppingCart = newCartItem ? [...state.shoppingCart, newCartItem] : state.shoppingCart
+      const index: number | undefined = state.items.findIndex(item => item.id === payload)
+      const newShoppingCart = index >= 0 ? [...state.shoppingCart, state.items[index]] : state.shoppingCart
+      state.items[index].added = true;
+      
       return{
-        ...state
+        ...state,
+        shoppingCart: newShoppingCart
       }
     case "SEARCH":
       state.filteredItems = state.items.filter(item => {
@@ -44,10 +47,11 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
         }
       })
 
+      state.items = payload as ItemInterface[];
+      state.filteredItems = state.items;
+
       return {
         ...state,
-        items: payload as ItemInterface[],
-        filteredItems: payload as ItemInterface[],
         loading: false
       }
     case "ERROR":

@@ -9,4 +9,5 @@ export interface ItemProps{
   rate: number;
   image: string;
   dispatch: React.Dispatch<ActionType>
+  added: boolean
 }

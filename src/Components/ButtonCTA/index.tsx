@@ -1,13 +1,17 @@
 import { ButtonCTAProps } from "./types";
 
-export const ButtonCTA: React.FC<ButtonCTAProps> = ({content, ItemId, dispatch}): JSX.Element => {
+export const ButtonCTA: React.FC<ButtonCTAProps> = ({
+  ItemId,
+  dispatch,
+  added
+}): JSX.Element => {
   const handleClick = () => {
     dispatch({ type: "ADD_TO_CART", payload: ItemId })
   }
 
   return(
-    <button className="ButtonCTA" onClick={handleClick}>
-      {content}
+    <button className={`ButtonCTA ${added && "added"}`} onClick={handleClick}>
+      {added ? `Remove` : `Add to cart`}
     </button>
   )
 }

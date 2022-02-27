@@ -23,6 +23,7 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
                 rate={item.rating.rate}
                 image={item.image}
                 dispatch={dispatch}
+                added={item.added as boolean}
               />
             ))}
           </section>
