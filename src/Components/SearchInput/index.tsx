@@ -1,7 +1,7 @@
 import React from "react";
 
 import Search from "../../Assets/Icons/search.png";
-import { SearchInputInterface } from "../../Interfaces";
+import { SearchInputInterface } from "./types";
 
 export const SearchInput: React.FC<SearchInputInterface> = ({setIsSearching}): JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null)
