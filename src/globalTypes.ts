@@ -15,6 +15,7 @@ export interface ItemInterface{
 
 export interface StateInterface{
   items: Array<ItemInterface>,
+  filteredItems: Array<ItemInterface>,
   categories: Array<string>,
   error: boolean,
   loading: boolean
@@ -22,5 +23,5 @@ export interface StateInterface{
 
 export type ActionType = {
   type: string,
-  payload?: ItemInterface[]
+  payload?: ItemInterface[] | string
 }

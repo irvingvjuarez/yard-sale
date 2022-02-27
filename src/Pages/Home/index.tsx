@@ -10,9 +10,10 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
     if(state.items.length){
       return(
         <React.Fragment>
-          <Filter categories={state.categories} />
+          <Filter categories={state.categories} dispatch={dispatch} />
+
           <section className="Home__items">
-            {state.items.map(item => (
+            {state.filteredItems.map(item => (
               <Item 
                 key={item.id} 
                 name={item.title} 
