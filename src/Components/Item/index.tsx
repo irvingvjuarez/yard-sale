@@ -1,21 +1,22 @@
 import { Rating } from "../Rating";
 import { ButtonCTA } from "../ButtonCTA";
+import { ItemProps } from "./types";
 
-export const Item: React.FC = (): JSX.Element => {
+export const Item: React.FC<ItemProps> = ({ name, category, price, rate, image }): JSX.Element => {
   return(
     <div className="Item">
       <div className="Item__thumbnail">
-        {/* <img src="" alt="" /> */}
+        <img src={image} alt={name} />
       </div>
 
       <div className="Item__body">
-        <h2>Name of the product(s)</h2>
-        <span>$XXXXXX</span>
-        <span>4 day delivery</span>
+        <h2>{name}</h2>
+        <span>${price}</span>
+        <span className="Item__category">{category}</span>
       </div>
 
       <div className="Item__footer">
-        <Rating />
+        <Rating content={rate} />
         <ButtonCTA content="Add to cart" />
       </div>
     </div>

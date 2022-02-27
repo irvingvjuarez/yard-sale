@@ -12,7 +12,14 @@ export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
           <Filter />
           <section className="Home__items">
             {state.items.map(item => (
-              <Item key={item.id} />
+              <Item 
+                key={item.id} 
+                name={item.title} 
+                category={item.category} 
+                price={item.price}
+                rate={item.rating.rate}
+                image={item.image}
+              />
             ))}
           </section>
         </React.Fragment>

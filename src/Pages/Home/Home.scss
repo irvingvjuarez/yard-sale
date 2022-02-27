@@ -1,8 +1,18 @@
 .Home{
+  padding-bottom: 30px;
+
   &__items{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 25px;
     padding-top: 20px;
+
+    @media screen and (min-width: 680px){
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: 1020px){
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 }
