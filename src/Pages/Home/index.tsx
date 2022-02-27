@@ -2,10 +2,10 @@ import React from "react";
 
 import { Filter } from "../../Containers/Filter";
 import { Item } from "../../Components/Item";
-import { HomeProps } from "./types";
 import { Skeleton } from "../../Containers/Skeleton";
+import { PageProps } from "../../globalTypes";
 
-export const Home: React.FC<HomeProps> = ({ state, dispatch }): JSX.Element => {
+export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
 
   const renderContent = (): JSX.Element => {
     if(state.filteredItems.length){

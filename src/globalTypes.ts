@@ -28,3 +28,8 @@ export type ActionType = {
   type: string,
   payload?: ItemInterface[] | string | number
 }
+
+export interface PageProps {
+  state: StateInterface;
+  dispatch: React.DispatchWithoutAction
+}

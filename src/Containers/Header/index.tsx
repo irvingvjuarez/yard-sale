@@ -29,7 +29,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
 
             <ButtonSmall 
               isLink={true}
-              to="#"
+              to="/menu"
               source={Menu}
               notificationsFlag={notificationsFlag} 
             />
