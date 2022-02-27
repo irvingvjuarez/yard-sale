@@ -5,10 +5,11 @@ export const ButtonSmall: React.FC<ButtonSmallProps> = ({
   source,
   to,
   onclick,
-  notificationsFlag
+  notificationsFlag,
+  isCTA
 }): JSX.Element => {
   return(
-    <button onClick={onclick} className="Button-small">
+    <button onClick={onclick} className={`Button-small ${isCTA && "cta"}`}>
       {notificationsFlag as number > 0 && (
         <span className="Button-small__notification"></span>
       )}

@@ -31,8 +31,18 @@ function App(): JSX.Element {
         notificationsFlag={state.shoppingCart.length}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Home state={state as StateInterface} dispatch={dispatch as React.DispatchWithoutAction} />} />
-            <Route path="/menu" element={<Menu state={state as StateInterface} dispatch={dispatch as React.DispatchWithoutAction} />} />
+            <Route path="/" element={
+              <Home
+                state={state as StateInterface}
+                dispatch={dispatch as React.DispatchWithoutAction}
+              />
+            }/>
+            <Route path="/menu" element={
+              <Menu 
+                state={state as StateInterface}
+                dispatch={dispatch as React.DispatchWithoutAction}
+              />
+            }/>
           </Routes>
         </BrowserRouter>
       </Layout>

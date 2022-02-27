@@ -31,5 +31,5 @@ export type ActionType = {
 
 export interface PageProps {
   state: StateInterface;
-  dispatch: React.DispatchWithoutAction
+  dispatch: React.DispatchWithoutAction;
 }

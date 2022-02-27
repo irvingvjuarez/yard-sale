@@ -3,6 +3,7 @@ import React from "react";
 import Logo from "../../Assets/Images/logo.png";
 import Menu from "../../Assets/Icons/menu.png";
 import Search from "../../Assets/Icons/search.png";
+import ArrowLeft from "../../Assets/Icons/arrow-left.svg";
 
 import { HeaderProps } from "./types";
 
@@ -13,12 +14,15 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): JSX.Element => {
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
+  const currentPathname: string = window.location.pathname
 
-  return (
-    <header className="Header">
-      {isSearching ? (
+  const renderMainHeader = (): JSX.Element => {
+    if(isSearching){
+      return(
         <SearchInput setIsSearching={setIsSearching} dispatch={dispatch}/>
-      ) : (
+      )
+    }else{
+      return(
         <React.Fragment>
           <a href="/" className="Header__logo">
             <img src={Logo} alt="" />
@@ -36,6 +40,27 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
             
           </nav>
         </React.Fragment>
+      )
+    }
+  }
+
+  return (
+    <header className="Header">
+      {currentPathname.length > 1 ? (
+        <React.Fragment>
+          <ButtonSmall
+            isLink={true}
+            to="/"
+            source={ArrowLeft}
+            isCTA={true}
+          />
+
+          <h2 className="Header__title">
+            Menu
+          </h2>
+        </React.Fragment>
+      ) : (
+        renderMainHeader()
       )}
     </header>
   )

@@ -4,4 +4,5 @@ export interface ButtonSmallProps{
   to?: string;
   onclick?: React.MouseEventHandler<HTMLButtonElement>;
   notificationsFlag?: string | number | boolean;
+  isCTA?: boolean
 }
