@@ -13,7 +13,10 @@ export const ButtonSmall: React.FC<ButtonSmallProps> = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     dispatch && dispatch({ type: "" })
     if(onclick) onclick(e)
-    if(to) navigate(to)
+    if(to){
+      dispatch && dispatch({ type: "MOVING", payload: to as string })
+      navigate(to)
+    }
   }
 
   return(

@@ -15,16 +15,10 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 // constants
 import { locationRegex } from "../../constants";
 
-export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag, current }): JSX.Element => {
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
-  const currentPathname: string = window.location.pathname
-  let title: string = "";
-  if(currentPathname.length > 1){
-    title = currentPathname.match(locationRegex)?.join(" ") as string
-  }
-
-  console.log(window.location.pathname)
+  current = current.length > 1 ? current.match(locationRegex)?.join(" ") as string : current
 
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
@@ -56,7 +50,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
 
   return (
     <header className="Header">
-      {currentPathname.length > 1 ? (
+      {current.length > 1 ? (
         <React.Fragment>
           <ButtonSmall
             to="/"
@@ -66,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
           />
 
           <h2 className="Header__title">
-            {title}
+            {current}
           </h2>
         </React.Fragment>
       ) : (

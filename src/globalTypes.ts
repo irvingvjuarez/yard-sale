@@ -20,6 +20,7 @@ export interface StateInterface{
   shoppingCart: Array<ItemInterface>,
   searching: string,
   categories: Array<string>,
+  current: string,
   error: boolean,
   loading: boolean
 }

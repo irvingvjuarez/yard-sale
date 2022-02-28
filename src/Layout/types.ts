@@ -4,5 +4,6 @@ import { ActionType } from "../globalTypes";
 export interface LayoutProps {
   children: JSX.Element,
   dispatch: React.Dispatch<ActionType>,
-  notificationsFlag: number
+  notificationsFlag: number,
+  current: string
 }

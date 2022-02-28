@@ -30,23 +30,25 @@ function App(): JSX.Element {
       <BrowserRouter>
         <Layout 
           dispatch={dispatch}
-          notificationsFlag={state.shoppingCart.length}>
+          notificationsFlag={state.shoppingCart.length}
+          current={state.current}>
           <Routes>
             <Route path="/" element={
               <Home
                 state={state as StateInterface}
-                dispatch={dispatch as React.Dispatch<ActionType>}
+                dispatch={dispatch}
               />
             }/>
             <Route path="/menu" element={
               <Menu 
                 state={state as StateInterface}
+                dispatch={dispatch}
               />
             }/>
             <Route path='/shopping-cart' element={
               <Cart 
                 state={state as StateInterface}
-                dispatch={dispatch as React.Dispatch<ActionType>}
+                dispatch={dispatch}
               />
             }/>
           </Routes>

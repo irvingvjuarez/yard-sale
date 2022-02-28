@@ -4,7 +4,7 @@
   width: 100vw;
   background-color: $clear-color;
 
-  a{
+  &__bar{
     display: flex;
     align-items: center;
     justify-content: space-between;
