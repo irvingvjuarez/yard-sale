@@ -21,7 +21,26 @@
     letter-spacing: 1px;
   }
 
-  span{
+  &__arrow-right{
+    display: block;
     transform: rotate(-180deg);
+  }
+
+  &__buttons{
+    display: flex;
+    align-items: center;
+  }
+
+  &__notification{
+    display: grid;
+    place-content: center;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: $contrast-color;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-right: 5px;
   }
 }
