@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { createContext, useReducer } from 'react';
 import { Layout } from "./Layout";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Home } from "./Pages/Home";
@@ -10,10 +10,12 @@ import { initialState, reducer } from "./globalState";
 
 // css
 import './App.scss';
-import { ActionType, StateInterface } from './globalTypes';
+import { StateInterface } from './globalTypes';
+
 
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
+  const Context = createContext(state)
 
   React.useEffect(() => {
     try{
@@ -26,35 +28,38 @@ function App(): JSX.Element {
   }, [])
 
   return (
-    <section className="App">
-      <BrowserRouter>
-        <Layout 
-          dispatch={dispatch}
-          notificationsFlag={state.shoppingCart.length}
-          current={state.current}>
-          <Routes>
-            <Route path="/" element={
-              <Home
-                state={state as StateInterface}
-                dispatch={dispatch}
-              />
-            }/>
-            <Route path="/menu" element={
-              <Menu 
-                state={state as StateInterface}
-                dispatch={dispatch}
-              />
-            }/>
-            <Route path='/shopping-cart' element={
-              <Cart 
-                state={state as StateInterface}
-                dispatch={dispatch}
-              />
-            }/>
-          </Routes>
-        </Layout>
-      </BrowserRouter>
-    </section>
+    <Context.Provider value={state}>
+      <section className="App">
+        <BrowserRouter>
+          <Layout 
+            dispatch={dispatch}
+            notificationsFlag={state.shoppingCart.length}
+            current={state.current}
+            ctx={Context}>
+            <Routes>
+              <Route path="/" element={
+                <Home
+                  state={state as StateInterface}
+                  dispatch={dispatch}
+                />
+              }/>
+              <Route path="/menu" element={
+                <Menu 
+                  state={state as StateInterface}
+                  dispatch={dispatch}
+                />
+              }/>
+              <Route path='/shopping-cart' element={
+                <Cart 
+                  state={state as StateInterface}
+                  dispatch={dispatch}
+                />
+              }/>
+            </Routes>
+          </Layout>
+        </BrowserRouter>
+      </section>
+    </Context.Provider>
   );
 }
 

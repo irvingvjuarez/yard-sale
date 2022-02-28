@@ -1,9 +1,10 @@
 import React from "react";
-import { ActionType } from "../globalTypes";
+import { ActionType, StateInterface } from "../globalTypes";
 
 export interface LayoutProps {
   children: JSX.Element,
   dispatch: React.Dispatch<ActionType>,
   notificationsFlag: number,
-  current: string
+  current: string,
+  ctx: React.Context<StateInterface>
 }

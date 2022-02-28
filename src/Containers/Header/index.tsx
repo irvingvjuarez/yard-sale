@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createContext, useContext } from "react";
 // images and/or icons
 import Logo from "../../Assets/Images/logo.png";
 import Menu from "../../Assets/Icons/menu.png";
@@ -6,7 +6,6 @@ import Search from "../../Assets/Icons/search.png";
 import ArrowLeft from "../../Assets/Icons/arrow-left.svg";
 
 import { HeaderProps } from "./types";
-import { To } from "react-router-dom";
 
 // components
 import { SearchInput } from "../../Components/SearchInput";
@@ -14,8 +13,10 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 
 // constants
 import { locationRegex } from "../../constants";
+import { StateInterface } from "../../globalTypes";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag, current }): JSX.Element => {
+
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
   current = current.length > 1 ? current.match(locationRegex)?.join(" ") as string : current
