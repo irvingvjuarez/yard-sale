@@ -6,10 +6,12 @@ export const ButtonSmall: React.FC<ButtonSmallProps> = ({
   to,
   onclick,
   notificationsFlag,
-  isCTA
+  isCTA,
+  dispatch
 }): JSX.Element => {
   const navigate = useNavigate()
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    dispatch && dispatch({ type: "" })
     if(onclick) onclick(e)
     if(to) navigate(to)
   }

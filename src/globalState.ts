@@ -74,6 +74,8 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
         loading: false
       }
     default:
-      return state
+      return {
+        ...state
+      }
   }
 }

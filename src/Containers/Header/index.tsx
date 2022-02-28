@@ -24,6 +24,8 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
     title = currentPathname.match(locationRegex)?.join(" ") as string
   }
 
+  console.log(window.location.pathname)
+
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
       return(
@@ -42,7 +44,8 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
             <ButtonSmall
               to="/menu"
               source={Menu}
-              notificationsFlag={notificationsFlag} 
+              notificationsFlag={notificationsFlag}
+              dispatch={dispatch}
             />
             
           </nav>
@@ -56,9 +59,10 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag }): 
       {currentPathname.length > 1 ? (
         <React.Fragment>
           <ButtonSmall
-            to={-1 as To}
+            to="/"
             source={ArrowLeft}
             isCTA={true}
+            dispatch={dispatch}
           />
 
           <h2 className="Header__title">
