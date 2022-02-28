@@ -31,11 +31,7 @@ function App(): JSX.Element {
     <Context.Provider value={state}>
       <section className="App">
         <BrowserRouter>
-          <Layout 
-            dispatch={dispatch}
-            notificationsFlag={state.shoppingCart.length}
-            current={state.current}
-            ctx={Context}>
+          <Layout dispatch={dispatch} ctx={Context}>
             <Routes>
               <Route path="/" element={
                 <Home

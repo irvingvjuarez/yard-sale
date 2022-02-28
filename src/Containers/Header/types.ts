@@ -1,8 +1,7 @@
 import React from "react";
-import { ActionType } from "../../globalTypes"
+import { ActionType, StateInterface } from "../../globalTypes"
 
 export interface HeaderProps{
   dispatch: React.Dispatch<ActionType>;
-  notificationsFlag: number;
-  current: string
+  ctx: React.Context<StateInterface>
 }

@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from "react";
+import React, { useContext } from "react";
 // images and/or icons
 import Logo from "../../Assets/Images/logo.png";
 import Menu from "../../Assets/Icons/menu.png";
@@ -13,9 +13,10 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 
 // constants
 import { locationRegex } from "../../constants";
-import { StateInterface } from "../../globalTypes";
 
-export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag, current }): JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
+  const state = useContext(ctx)
+  let { current, shoppingCart } = state
 
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
@@ -38,8 +39,8 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, notificationsFlag, cur
 
             <ButtonSmall
               to="/menu"
+              dependencies={shoppingCart.length}
               source={Menu}
-              notificationsFlag={notificationsFlag}
               dispatch={dispatch}
             />
             
