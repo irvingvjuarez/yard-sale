@@ -1,0 +1,37 @@
+.Product{
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 5px;
+
+  &__thumbnail{
+    width: 100%;
+    height: 100%;
+    margin-right: 5px;
+    background-color: $clear-color;
+    border-radius: 9px;
+  }
+
+  &__content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    div *{
+      display: block;
+    }
+    h2{
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    span{
+      font-size: 1.1rem;
+      margin-block: 5px;
+    }
+    select{
+      width: 130px;
+      padding: 3px;
+      font-size: 1.1rem;
+    }
+  }
+}
