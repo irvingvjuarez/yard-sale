@@ -16,7 +16,7 @@ import { locationRegex } from "../../constants";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
   const state = useContext(ctx)
-  let { current, shoppingCart } = state
+  let { current, shoppingCart, history } = state
 
   const [isSearching, setIsSearching] = React.useState<boolean>(false)
   const handleSearch = (): void => setIsSearching(prev => !prev)
@@ -55,7 +55,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
       {current.length > 1 ? (
         <React.Fragment>
           <ButtonSmall
-            to="/"
+            to={history}
             source={ArrowLeft}
             isCTA={true}
             dispatch={dispatch}

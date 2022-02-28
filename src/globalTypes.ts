@@ -21,6 +21,7 @@ export interface StateInterface{
   searching: string,
   categories: Array<string>,
   current: string,
+  history: string,
   error: boolean,
   loading: boolean
 }

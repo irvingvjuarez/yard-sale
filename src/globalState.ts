@@ -7,6 +7,7 @@ export const initialState = (): StateInterface => {
     shoppingCart: [],
     categories: ["All items"],
     current: "/",
+    history: "",
     searching: "",
     error: false,
     loading: true
@@ -24,6 +25,7 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   switch(type){
     case "MOVING":
       state.current = payload as string;
+      state.history = payload === "/menu" ? "/" : "/menu"
       return{ ...state }
 
     case "REMOVE":
@@ -74,6 +76,7 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
         error: true,
         loading: false
       }
+
     default:
       return { ...state }
   }

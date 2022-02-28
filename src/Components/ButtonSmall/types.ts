@@ -8,5 +8,5 @@ export interface ButtonSmallProps{
   to?: To;
   onclick?: React.MouseEventHandler<HTMLButtonElement>;
   isCTA?: boolean;
-  dispatch?: React.Dispatch<ActionType>
+  dispatch?: React.Dispatch<ActionType>;
 }
