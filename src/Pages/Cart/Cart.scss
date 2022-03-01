@@ -1,7 +1,14 @@
 .Cart{
+  position: relative;
+  min-height: 80vh;
   padding-block: 10px;
 
   &__msg{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
     display: block;
     text-align: center;
     font-size: 1.5rem;

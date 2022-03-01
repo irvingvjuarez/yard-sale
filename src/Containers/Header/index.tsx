@@ -16,16 +16,17 @@ import { locationRegex } from "../../constants";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
   const state = useContext(ctx)
-  let { current, shoppingCart, history } = state
+  let { current, shoppingCart, history, isSearching } = state
 
-  const [isSearching, setIsSearching] = React.useState<boolean>(false)
-  const handleSearch = (): void => setIsSearching(prev => !prev)
+  console.log(isSearching)
+
+  const handleSearch = (): void => dispatch({ type: "SEARCH" })
   current = current.length > 1 ? current.match(locationRegex)?.join(" ") as string : current
 
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
       return(
-        <SearchInput setIsSearching={setIsSearching} dispatch={dispatch}/>
+        <SearchInput dispatch={dispatch}/>
       )
     }else{
       return(

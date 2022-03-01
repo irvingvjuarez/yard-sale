@@ -12,7 +12,12 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
         <section className="Cart__content">
           <article className="Cart__products">
             {shoppingCart.map(product => (
-              <Product key={product.id} />
+              <Product 
+                key={product.id} 
+                title={product.title}
+                price={product.price}
+                img={product.image}
+              />
             ))}
           </article>
 

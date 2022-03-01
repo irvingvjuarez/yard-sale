@@ -3,12 +3,12 @@ import React from "react";
 import Search from "../../Assets/Icons/search.png";
 import { SearchInputInterface } from "./types";
 
-export const SearchInput: React.FC<SearchInputInterface> = ({setIsSearching, dispatch}): JSX.Element => {
+export const SearchInput: React.FC<SearchInputInterface> = ({dispatch}): JSX.Element => {
   const inputRef = React.useRef<HTMLInputElement>(null)
-  const handleBlur = (): void => setIsSearching(prev => !prev)
+  const handleBlur = (): void => dispatch({ type: "SEARCH" })
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch({ type: "SEARCH", payload: e.target.value })
+    dispatch({ type: "SEARCHING", payload: e.target.value })
   }
 
   React.useEffect(() => {

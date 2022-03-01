@@ -9,6 +9,7 @@ export const initialState = (): StateInterface => {
     current: "/",
     history: "",
     searching: "",
+    isSearching: false,
     error: false,
     loading: true
   }
@@ -23,6 +24,11 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   }
 
   switch(type){
+    case "SEARCH":
+      return{
+        ...state,
+        isSearching: !state.isSearching
+      }
     case "MOVING":
       state.current = payload as string;
       state.history = payload === "/menu" ? "/" : "/menu"
@@ -43,7 +49,7 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
         shoppingCart: newShoppingCart
       }
 
-    case "SEARCH":
+    case "SEARCHING":
       state.filteredItems = state.items.filter(item => {
         let searching: string = payload as string
         return item.title.toLowerCase().includes(searching.toLowerCase())

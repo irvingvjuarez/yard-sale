@@ -1,17 +1,18 @@
 import { ButtonSmall } from "../ButtonSmall";
 import Trash from "../../Assets/Icons/trash.svg";
+import { ProductProps } from "./types";
 
-export const Product: React.FC = (): JSX.Element => {
+export const Product: React.FC<ProductProps> = ({ title, price, img }): JSX.Element => {
   return(
     <div className="Product">
       <div className="Product__thumbnail">
-        {/* <img src="" alt="" /> */}
+        <img src={img} alt={title} />
       </div>
 
       <div className="Product__content">
         <div>
-          <h2>Article Name</h2>
-          <span>$XXXXXXX</span>
+          <h2>{title}</h2>
+          <span>${price}</span>
           <select>
             <option value="">1</option>
             <option value="">2</option>
