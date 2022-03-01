@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import Search from "../../Assets/Icons/search.png";
 import { SearchInputInterface } from "./types";
 
-export const SearchInput: React.FC<SearchInputInterface> = ({dispatch}): JSX.Element => {
+export const SearchInput: React.FC<SearchInputInterface> = ({dispatch, ctx}): JSX.Element => {
+  const state = useContext(ctx)
+  const { searching } = state
   const inputRef = React.useRef<HTMLInputElement>(null)
   const handleBlur = (): void => dispatch({ type: "SEARCH" })
 
@@ -27,6 +29,7 @@ export const SearchInput: React.FC<SearchInputInterface> = ({dispatch}): JSX.Ele
         ref={inputRef}
         onBlur={handleBlur}
         onChange={handleChange}
+        defaultValue={searching}
       />
     </div>
   )
