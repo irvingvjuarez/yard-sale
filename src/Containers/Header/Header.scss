@@ -6,6 +6,10 @@
   align-items: center;
   justify-content: space-between;
 
+  &__logo{
+    @include buttonPrimary;
+  }
+
   &__buttons-container{
     height: 100%;
     display: flex;

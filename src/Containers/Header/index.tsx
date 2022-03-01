@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { Fragment, useContext, useRef } from "react";
 // images and/or icons
 import Logo from "../../Assets/Images/logo.png";
 import Menu from "../../Assets/Icons/menu.png";
@@ -14,8 +14,10 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 
 // constants
 import { locationRegex } from "../../constants";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
+  const navigate: NavigateFunction = useNavigate()
   const state = useContext(ctx)
   let { current, shoppingCart, history, isSearching, searching } = state
   
@@ -40,9 +42,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
     }else{
       return(
         <React.Fragment>
-          <a href="/" className="Header__logo">
+          <button className="Header__logo" onClick={() => navigate("/")}>
             <img src={Logo} alt="" />
-          </a>
+          </button>
 
           <nav className="Header__buttons-container">
             <ButtonSmall source={Search} onclick={handleSearch} />
@@ -56,26 +58,26 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
           </nav>
 
           <nav className="Header__desktop">
-            <div className="Header__search-field">
-              <label htmlFor="search">
-                <img src={Search} alt="" />
-              </label>
-              <input 
-                ref={searchDesktopRef}
-                type="text"
-                id="search"
-                placeholder="Search..."
-                onChange={handleSearchDesktop}
-                defaultValue={searching}
-              />
-            </div>
+            {(window.location.pathname === "/") && (
+              <div className="Header__search-field">
+                <label htmlFor="search">
+                  <img src={Search} alt="" />
+                </label>
+
+                <input 
+                  ref={searchDesktopRef}
+                  type="text"
+                  id="search"
+                  placeholder="Search..."
+                  onChange={handleSearchDesktop}
+                  defaultValue={searching}
+                />
+              </div>
+            )}
 
             <button 
               className="Header__cart"
-              onClick={() => dispatch({ 
-                type: "MOVING",
-                payload: "shopping-cart" 
-              })}
+              onClick={() => navigate("shopping-cart")}
             >
               <span>Cart</span>
               <img src={Cart} alt="" />
