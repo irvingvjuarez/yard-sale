@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
     dispatch({ type: "SEARCHING", payload: e.target.value })
   }
   current = current.length > 1 ? current.match(locationRegex)?.join(" ") as string : current
-  
+
   React.useEffect(() => {
     if(searching && searchDesktopRef.current){
       searchDesktopRef.current.focus()
@@ -79,6 +79,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
             >
               <span>Cart</span>
               <img src={Cart} alt="" />
+              {(shoppingCart.length > 0) && (
+                <span className="Header__cart--notification"></span>
+              )}
             </button>
           </nav>
         </React.Fragment>

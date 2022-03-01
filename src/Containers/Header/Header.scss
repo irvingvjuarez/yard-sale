@@ -63,6 +63,7 @@
     }
 
     &__cart{
+      position: relative;
       background-color: $contrast-color;
       border: none;
       display: flex;
@@ -75,6 +76,17 @@
 
       span{
         margin-right: 5px;
+      }
+
+      &--notification{
+        position: absolute;
+        top: -7px;
+        right: -7px;
+        display: block;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: red;
       }
     }
   }
