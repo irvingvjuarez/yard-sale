@@ -3,15 +3,19 @@ import React from "react";
 import { Filter } from "../../Containers/Filter";
 import { Item } from "../../Components/Item";
 import { Skeleton } from "../../Containers/Skeleton";
-import { ActionType, PageProps } from "../../globalTypes";
+import { ActionType, PageProps, StateInterface } from "../../globalTypes";
 
-export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
+export const Home: React.FC<PageProps> = ({ state, dispatch, ctx }): JSX.Element => {
 
   const renderContent = (): JSX.Element => {
     if(state.filteredItems.length){
       return(
         <React.Fragment>
-          <Filter categories={state.categories} dispatch={dispatch as React.Dispatch<ActionType>} />
+          <Filter
+            categories={state.categories}
+            dispatch={dispatch as React.Dispatch<ActionType>} 
+            ctx={ctx as React.Context<StateInterface>}
+          />
 
           <section className="Home__items">
             {state.filteredItems.map(item => (
@@ -34,7 +38,11 @@ export const Home: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
       if(state.searching){
         return(
           <React.Fragment>
-            <Filter categories={state.categories} dispatch={dispatch as React.Dispatch<ActionType>} />
+            <Filter
+              categories={state.categories}
+              dispatch={dispatch as React.Dispatch<ActionType>} 
+              ctx={ctx as React.Context<StateInterface>}
+            />
             <span className="Home__no-found">No items found</span>
           </React.Fragment>
         )

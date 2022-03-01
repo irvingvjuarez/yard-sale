@@ -37,6 +37,7 @@ function App(): JSX.Element {
                 <Home
                   state={state as StateInterface}
                   dispatch={dispatch}
+                  ctx={Context}
                 />
               }/>
               <Route path="/menu" element={

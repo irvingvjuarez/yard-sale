@@ -1,3 +1,5 @@
+import React from "react";
+
 interface RatingInterface{
   rate: number;
   count: number;
@@ -23,6 +25,7 @@ export interface StateInterface{
   current: string,
   history: string,
   isSearching: boolean,
+  filterAt: string,
   error: boolean,
   loading: boolean
 }
@@ -35,4 +38,5 @@ export type ActionType = {
 export interface PageProps {
   state: StateInterface;
   dispatch?: React.Dispatch<ActionType>;
+  ctx?: React.Context<StateInterface>
 }
