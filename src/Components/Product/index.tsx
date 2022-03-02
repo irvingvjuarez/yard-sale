@@ -1,7 +1,6 @@
 import { ButtonSmall } from "../ButtonSmall";
 import Trash from "../../Assets/Icons/trash.svg";
 import { ProductProps } from "./types";
-import { priceInterface } from "../../Pages/Cart/types";
 
 export const Product: React.FC<ProductProps> = ({ 
   title,

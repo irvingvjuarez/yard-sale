@@ -2,15 +2,28 @@ import React from "react";
 import { ButtonCTA } from "../../Components/ButtonCTA";
 import { Product } from "../../Components/Product";
 import { PageProps, ActionType } from "../../globalTypes";
-import { priceInterface } from "./types";
+import { ITotalAmount, totalAmountInitial } from "./types";
 
 export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const { shoppingCart } = state
+  const [totalAmount, setTotalAmount] = React.useState<ITotalAmount>(totalAmountInitial)
 
   React.useEffect(() => {
     if(shoppingCart.length) {
+      let subtotal = 0;
+      let taxes = 0;
+      let total = 0;
+
       shoppingCart.forEach(product => {
-        console.log(product.title, product.quantity)
+        subtotal += product.price * (product.quantity as number)
+        taxes += Math.round(subtotal * 0.16);
+        total += Math.round(subtotal + taxes)
+      })
+
+      setTotalAmount({
+        subtotal: subtotal,
+        taxes: taxes,
+        total: total
       })
     }
   }, [shoppingCart])
@@ -37,17 +50,17 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
             <div className="Cart__total">
               <div className="Cart__total--subtotal">
                 <h2>Subtotal</h2>
-                <span>$XXXXX</span>
+                <span>${totalAmount.subtotal}</span>
               </div>
 
               <div className="Cart__total--subtotal">
                 <h2>Taxes</h2>
-                <span>$XXXXXX</span>
+                <span>${totalAmount.taxes}</span>
               </div>
 
               <div className="Cart__total--total">
                 <h2>Total</h2>
-                <span>$XXXXXXX</span>
+                <span>${totalAmount.total}</span>
               </div>
             </div>
 

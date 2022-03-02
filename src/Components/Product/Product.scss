@@ -45,4 +45,18 @@
       font-size: 1.1rem;
     }
   }
+
+  @media screen and (min-width: 700px){
+    grid-template-columns: 120px 1fr;
+    gap: 20px;
+
+    &__content{
+      div{
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+    }
+  }
 }

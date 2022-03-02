@@ -1,5 +1,4 @@
 import { ActionType } from "../../globalTypes";
-import { priceInterface } from "../../Pages/Cart/types";
 
 export interface ProductProps{
   title: string;
