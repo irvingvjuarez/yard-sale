@@ -1,6 +1,7 @@
 import { Rating } from "../Rating";
 import { ButtonCTA } from "../ButtonCTA";
 import { ItemProps } from "./types";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 export const Item: React.FC<ItemProps> = ({ 
   id, 
@@ -12,14 +13,19 @@ export const Item: React.FC<ItemProps> = ({
   dispatch,
   added
 }): JSX.Element => {
+  const navigate: NavigateFunction = useNavigate()
+  const handleNavigate = () => {
+    navigate(`/products/${name}`)
+  }
+
   return(
     <div className="Item">
-      <div className="Item__thumbnail">
+      <div className="Item__thumbnail" onClick={handleNavigate}>
         <img src={image} alt={name} />
       </div>
 
       <div className="Item__body">
-        <h2>{name}</h2>
+        <h2 onClick={handleNavigate}>{name}</h2>
         <span>${price}</span>
         <span className="Item__category">{category}</span>
       </div>
