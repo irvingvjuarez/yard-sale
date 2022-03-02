@@ -16,14 +16,14 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
 
       shoppingCart.forEach(product => {
         subtotal += product.price * (product.quantity as number)
-        taxes += Math.round(subtotal * 0.16);
-        total += Math.round(subtotal + taxes)
+        taxes += subtotal * 0.16;
+        total += subtotal + taxes;
       })
 
       setTotalAmount({
-        subtotal: subtotal,
-        taxes: taxes,
-        total: total
+        subtotal: Math.round(subtotal),
+        taxes: Math.round(taxes),
+        total: Math.round(total)
       })
     }
   }, [shoppingCart])

@@ -12,7 +12,6 @@ export const Home: React.FC<PageProps> = ({ state, dispatch, ctx }): JSX.Element
       return(
         <React.Fragment>
           <Filter
-            categories={state.categories}
             dispatch={dispatch as React.Dispatch<ActionType>} 
             ctx={ctx as React.Context<StateInterface>}
           />
@@ -39,7 +38,6 @@ export const Home: React.FC<PageProps> = ({ state, dispatch, ctx }): JSX.Element
         return(
           <React.Fragment>
             <Filter
-              categories={state.categories}
               dispatch={dispatch as React.Dispatch<ActionType>} 
               ctx={ctx as React.Context<StateInterface>}
             />

@@ -15,6 +15,7 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 // constants
 import { locationRegex } from "../../constants";
 import { NavigateFunction, useNavigate } from "react-router-dom";
+import { Filter } from "../Filter";
 
 export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
@@ -58,33 +59,42 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
           </nav>
 
           <nav className="Header__desktop">
-            {(window.location.pathname === "/") && (
-              <div className="Header__search-field">
-                <label htmlFor="search">
-                  <img src={Search} alt="" />
-                </label>
+            {(window.location.pathname === "/") ? (
+              <Fragment>
+                <div className="Header__search-field">
+                  <label htmlFor="search">
+                    <img src={Search} alt="" />
+                  </label>
 
-                <input 
-                  ref={searchDesktopRef}
-                  type="text"
-                  id="search"
-                  placeholder="Search..."
-                  onChange={handleSearchDesktop}
-                  defaultValue={searching}
-                />
-              </div>
+                  <input 
+                    ref={searchDesktopRef}
+                    type="text"
+                    id="search"
+                    placeholder="Search..."
+                    onChange={handleSearchDesktop}
+                    defaultValue={searching}
+                  />
+                </div>
+
+                <button
+                  className="Header__cart"
+                  onClick={() => navigate("shopping-cart")}
+                >
+                  <span>Cart</span>
+                  <img src={Cart} alt="" />
+                  {(shoppingCart.length > 0) && (
+                    <span className="Header__cart--notification"></span>
+                  )}
+                </button>
+              </Fragment>
+            ) : (
+              <Filter
+                dispatch={dispatch}
+                ctx={ctx}
+                isInHeader={true}
+              />
             )}
 
-            <button 
-              className="Header__cart"
-              onClick={() => navigate("shopping-cart")}
-            >
-              <span>Cart</span>
-              <img src={Cart} alt="" />
-              {(shoppingCart.length > 0) && (
-                <span className="Header__cart--notification"></span>
-              )}
-            </button>
           </nav>
         </React.Fragment>
       )
