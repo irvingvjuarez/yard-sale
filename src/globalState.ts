@@ -1,4 +1,4 @@
-import { StateInterface, ActionType, ItemInterface } from "./globalTypes"
+import { StateInterface, ActionType, ItemInterface, ChangeQuantityInterface } from "./globalTypes"
 
 export const initialState = (): StateInterface => {
   return {
@@ -20,12 +20,25 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   const { type, payload } = action
   let index: number | undefined;
   let newShoppingCart: ItemInterface[];
+  let newItem: ItemInterface;
 
   const getIndex = () => {
     return state.items.findIndex(item => item.id === payload)
   }
 
   switch(type){
+    case "CHANGE_QUANTITY":
+      index = state.shoppingCart.findIndex(
+        item => item.id === (payload as ChangeQuantityInterface).id
+      )
+      newShoppingCart = state.shoppingCart
+      newShoppingCart[index].quantity = (payload as ChangeQuantityInterface).quantity
+
+      return {
+        ...state,
+        shoppingCart: newShoppingCart
+      }
+
     case "SEARCH":
       return{
         ...state,
@@ -47,7 +60,16 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
 
     case "ADD_TO_CART":
       index = getIndex()
-      newShoppingCart = index >= 0 ? [...state.shoppingCart, state.items[index]] : state.shoppingCart
+      if(index >= 0){
+        newItem = state.items[index]
+        newItem.quantity = 1
+        newShoppingCart = [
+          ...state.shoppingCart,
+          newItem
+        ]
+      }else{
+        newShoppingCart = state.shoppingCart
+      }
       state.items[index].added = true;
       return{
         ...state,

@@ -1,5 +1,10 @@
 import React from "react";
 
+export interface ChangeQuantityInterface{
+  id: number;
+  quantity: number
+}
+
 interface RatingInterface{
   rate: number;
   count: number;
@@ -13,6 +18,7 @@ export interface ItemInterface{
   price: number;
   rating: RatingInterface;
   title: string;
+  quantity?: number;
   added?: boolean
 }
 
@@ -32,7 +38,11 @@ export interface StateInterface{
 
 export type ActionType = {
   type: string,
-  payload?: ItemInterface[] | string | number
+  payload?: 
+    | ItemInterface[] 
+    | string 
+    | number 
+    | ChangeQuantityInterface
 }
 
 export interface PageProps {

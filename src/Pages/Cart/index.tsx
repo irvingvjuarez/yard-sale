@@ -1,10 +1,19 @@
 import React from "react";
 import { ButtonCTA } from "../../Components/ButtonCTA";
 import { Product } from "../../Components/Product";
-import { PageProps } from "../../globalTypes";
+import { PageProps, ActionType } from "../../globalTypes";
+import { priceInterface } from "./types";
 
 export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const { shoppingCart } = state
+
+  React.useEffect(() => {
+    if(shoppingCart.length) {
+      shoppingCart.forEach(product => {
+        console.log(product.title, product.quantity)
+      })
+    }
+  }, [shoppingCart])
 
   return(
     <section className="Cart">
@@ -16,7 +25,10 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
                 key={product.id} 
                 title={product.title}
                 price={product.price}
+                quantity={product.quantity as number}
                 img={product.image}
+                dispatch={dispatch as React.Dispatch<ActionType>}
+                id={product.id}
               />
             ))}
           </article>
@@ -25,7 +37,7 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
             <div className="Cart__total">
               <div className="Cart__total--subtotal">
                 <h2>Subtotal</h2>
-                <span>$XXXXXX</span>
+                <span>$XXXXX</span>
               </div>
 
               <div className="Cart__total--subtotal">
@@ -35,7 +47,7 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
 
               <div className="Cart__total--total">
                 <h2>Total</h2>
-                <span>$XXXXXX</span>
+                <span>$XXXXXXX</span>
               </div>
             </div>
 
