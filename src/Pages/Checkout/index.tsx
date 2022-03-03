@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { CheckoutInput } from "../../Components/CheckoutInput";
 import { ILocalState, initialLocalState } from "./types";
 
 export const Checkout: React.FC = (): JSX.Element => {
   const [localState, setLocalState] = useState<ILocalState>(initialLocalState)
+  const errorRef = useRef<HTMLSpanElement>(null)
 
   const handleChange = (evt: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
     setLocalState(prev => ({
@@ -19,7 +20,15 @@ export const Checkout: React.FC = (): JSX.Element => {
       if(!value) flag = false
     })
 
-    console.log(flag)
+    if(flag){
+      errorRef.current?.classList.remove("error")
+    }else{
+      errorRef.current?.classList.add("error")
+      window.scroll({
+        top: 10000,
+        behavior: 'smooth'
+      });
+    }
   }
 
   return(
@@ -73,6 +82,9 @@ export const Checkout: React.FC = (): JSX.Element => {
           placeholder="11655"
           onchange={handleChange}
         />
+        <span className="Checkout__error" ref={errorRef}>
+          Please filled all the text boxes above
+        </span>
       </form>
 
       <button className="Checkout__cta" onClick={handleSubmit}>
