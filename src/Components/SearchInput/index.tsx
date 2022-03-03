@@ -11,6 +11,9 @@ export const SearchInput: React.FC<SearchInputInterface> = ({dispatch, ctx}): JS
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: "SEARCHING", payload: e.target.value })
+    if(!e.target.value){
+      dispatch({ type: "FILTER", payload: "All items" })
+    }
   }
 
   React.useEffect(() => {

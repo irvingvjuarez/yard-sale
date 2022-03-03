@@ -30,6 +30,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
   const handleSearch = (): void => dispatch({ type: "SEARCH" })
   const handleSearchDesktop = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: "SEARCHING", payload: e.target.value })
+    if(!e.target.value){
+      dispatch({ type: "FILTER", payload: "All items" })
+    }
   }
   const isMenu: boolean = window.location.pathname === "/menu";
   const isCart: boolean = window.location.pathname === "/shopping-cart";

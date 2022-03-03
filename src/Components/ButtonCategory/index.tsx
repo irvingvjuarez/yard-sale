@@ -10,13 +10,13 @@ export const ButtonCategory: React.FC<ButtonCategoryProps> = ({
   }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
   const state = useContext(ctx)
-  const { filterAt } = state
+  const { filterAt, searching } = state
   const handleClick = () => {
     if(to) navigate(to)
     dispatch({ type: "FILTER", payload: content })
   }
 
-  const styles: string = `Button-category ${(filterAt === content && !to) && "chosen"}`
+  const styles: string = `Button-category ${((filterAt === content && !searching) && !to) && "chosen"}`
 
   return(
     <button className={styles} onClick={handleClick}>
