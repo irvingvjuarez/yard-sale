@@ -31,6 +31,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
   const handleSearchDesktop = (e: React.ChangeEvent<HTMLInputElement>) => {
     dispatch({ type: "SEARCHING", payload: e.target.value })
   }
+  const isMenu: boolean = window.location.pathname === "/menu";
+  const isCart: boolean = window.location.pathname === "/shopping-cart";
+  const isProduct: boolean = window.location.pathname.includes("products")
   current = current.length > 1 ? current.match(locationRegex)?.join(" ") as string : current
 
   React.useEffect(() => {
@@ -50,9 +53,19 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
     }else{
       return(
         <React.Fragment>
-          <button className="Header__logo" onClick={() => navigate("/")}>
-            <img src={Logo} alt="" />
-          </button>
+          {isProduct ? (
+            <ButtonSmall
+              to={history}
+              from={window.location.pathname}
+              source={ArrowLeft}
+              isCTA={true}
+              dispatch={dispatch}
+            />
+          ) : (
+            <button className="Header__logo" onClick={() => navigate("/")}>
+              <img src={Logo} alt="" />
+            </button>
+          )}
 
           <nav className="Header__buttons-container">
             {window.location.pathname === "/" && (
@@ -116,7 +129,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
 
   return (
     <header className="Header">
-      {(window.location.pathname === "/menu" || window.location.pathname === "/shopping-cart") ? (
+      {(isMenu || isCart) && window.screen.width < 700 ? (
         <React.Fragment>
           <ButtonSmall
             to={history}

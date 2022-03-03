@@ -15,6 +15,10 @@ export const Item: React.FC<ItemProps> = ({
 }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
   const handleNavigate = () => {
+    dispatch({
+      type: "MOVING",
+      payload: {current: `/products/${name}`, history: window.location.pathname}
+    })
     navigate(`/products/${name}`)
   }
 
