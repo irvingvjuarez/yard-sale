@@ -4,9 +4,12 @@ export const ButtonCTA: React.FC<ButtonCTAProps> = ({
   ItemId,
   dispatch,
   added,
-  content
+  content,
+  onclick
 }): JSX.Element => {
   const handleClick = () => {
+    if(onclick) onclick()
+
     const action: string = added ? "REMOVE" : "ADD_TO_CART";
     dispatch && dispatch({ type: action, payload: ItemId })
   }

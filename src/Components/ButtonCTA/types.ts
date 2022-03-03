@@ -6,4 +6,5 @@ export interface ButtonCTAProps{
   dispatch?: React.Dispatch<ActionType>;
   added?: boolean;
   content?: string;
+  onclick?: Function
 }

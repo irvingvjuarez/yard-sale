@@ -1,10 +1,12 @@
 import React from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 import { ButtonCTA } from "../../Components/ButtonCTA";
 import { Product } from "../../Components/Product";
 import { PageProps, ActionType } from "../../globalTypes";
 import { ITotalAmount, totalAmountInitial } from "./types";
 
 export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
+  const navigate: NavigateFunction = useNavigate()
   const { shoppingCart } = state
   const [totalAmount, setTotalAmount] = React.useState<ITotalAmount>(totalAmountInitial)
 
@@ -64,7 +66,19 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
               </div>
             </div>
 
-            <ButtonCTA content="Proceed to Checkout" />
+            <ButtonCTA 
+              content="Proceed to Checkout"
+              onclick={() => {
+                dispatch && dispatch({
+                  type: "MOVING",
+                  payload: {
+                    current: "/shopping-cart",
+                    history: "/checkout"
+                  }
+                })
+                navigate("/checkout")
+              }}
+            />
           </article>
         </section>
       ) : (

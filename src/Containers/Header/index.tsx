@@ -42,9 +42,6 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
     } 
   }, [searching])
 
-  console.log("Current:", current)
-  console.log("History:", history)
-
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
       return(

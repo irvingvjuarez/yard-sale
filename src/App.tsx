@@ -5,6 +5,7 @@ import { Home } from "./Pages/Home";
 import { Menu } from "./Pages/Menu";
 import { Cart } from "./Pages/Cart";
 import { Product } from './Pages/Product';
+import { Checkout } from './Pages/Checkout';
 
 // utils
 import { initialState, reducer } from "./globalState";
@@ -59,6 +60,10 @@ function App(): JSX.Element {
                   dispatch={dispatch}
                 />
               }/>
+              <Route path='/checkout' element={
+                <Checkout />
+              }
+              />
             </Routes>
           </Layout>
         </BrowserRouter>

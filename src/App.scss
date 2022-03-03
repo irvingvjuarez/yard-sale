@@ -13,6 +13,7 @@ body{
 }
 #root{
   position: relative;
+  min-height: 100vh;
 }
 .App{
   width: 90%;
@@ -30,6 +31,7 @@ body{
 @import "./Pages/Menu/Menu.scss";
 @import "./Pages/Cart/Cart.scss";
 @import "./Pages/Product/Product.scss";
+@import "./Pages/Checkout/Checkout.scss";
 
 @import "./Containers/Header/Header.scss";
 @import "./Containers/Filter/Filter.scss";
@@ -43,3 +45,4 @@ body{
 @import "./Components/Loader/Loader.scss";
 @import "./Components/Product/Product.scss";
 @import "./Components/ButtonCategory/ButtonCategory.scss";
+@import "./Components/CheckoutInput/CheckoutInput.scss";
