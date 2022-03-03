@@ -77,11 +77,13 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
                 </div>
               </Fragment>
             ) : (
-              <Filter
-                dispatch={dispatch}
-                ctx={ctx}
-                isInHeader={true}
-              />
+              <div className="Header__desktop--filter">
+                <Filter
+                  dispatch={dispatch}
+                  ctx={ctx}
+                  isInHeader={true}
+                />
+              </div>
             )}
 
             {window.location.pathname !== "/shopping-cart" && (
