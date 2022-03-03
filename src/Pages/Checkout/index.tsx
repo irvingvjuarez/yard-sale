@@ -1,8 +1,25 @@
+import { useState } from "react";
 import { CheckoutInput } from "../../Components/CheckoutInput";
+import { ILocalState, initialLocalState } from "./types";
 
 export const Checkout: React.FC = (): JSX.Element => {
+  const [localState, setLocalState] = useState<ILocalState>(initialLocalState)
+
   const handleChange = (evt: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>) => {
-    console.log(evt.target.id)
+    setLocalState(prev => ({
+      ...prev,
+      [evt.target.id]: evt.target.value
+    }))
+  }
+
+  const handleSubmit = () => {
+    let flag: boolean = true
+
+    Object.values(localState).forEach(value => {
+      if(!value) flag = false
+    })
+
+    console.log(flag)
   }
 
   return(
@@ -58,7 +75,7 @@ export const Checkout: React.FC = (): JSX.Element => {
         />
       </form>
 
-      <button className="Checkout__cta">
+      <button className="Checkout__cta" onClick={handleSubmit}>
         <h2>Pay $XXXXX</h2>
       </button>
     </section>
