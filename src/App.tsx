@@ -61,7 +61,10 @@ function App(): JSX.Element {
                 />
               }/>
               <Route path='/checkout' element={
-                <Checkout />
+                <Checkout
+                  state={state as StateInterface}
+                  dispatch={dispatch}
+                />
               }
               />
             </Routes>

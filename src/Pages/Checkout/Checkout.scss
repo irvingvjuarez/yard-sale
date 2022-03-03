@@ -33,3 +33,56 @@
     color: red;
   }
 }
+
+.Modal{
+  position: fixed;
+  display: grid;
+  place-content: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.75);
+  z-index: 1;
+
+  &__card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 90vw;
+    max-width: 500px;
+    height: 300px;
+    background-color: white;
+    border-radius: 9px;
+    padding: 12px;
+
+    h2{
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+
+      span{
+        font-size: 1rem;
+        display: block;
+        margin-bottom: 10px;
+      }
+    }
+
+    &--footer{
+      display: grid;
+      grid-template-columns: 70% 30%;
+
+      ul{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        list-style: none;
+      }
+
+      img{
+        width: 30px;
+      }
+    }
+
+  }
+}

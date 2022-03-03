@@ -27,6 +27,12 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
   }
 
   switch(type){
+    case "RESET":
+      return {
+        ...state,
+        shoppingCart: []
+      }
+
     case "CHANGE_QUANTITY":
       index = state.shoppingCart.findIndex(
         item => item.id === (payload as ChangeQuantityInterface).id
