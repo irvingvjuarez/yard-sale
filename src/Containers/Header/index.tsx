@@ -48,7 +48,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
           </button>
 
           <nav className="Header__buttons-container">
-            <ButtonSmall source={Search} onclick={handleSearch} />
+            {window.location.pathname === "/" && (
+              <ButtonSmall source={Search} onclick={handleSearch} />
+            )}
 
             <ButtonSmall
               to="/menu"

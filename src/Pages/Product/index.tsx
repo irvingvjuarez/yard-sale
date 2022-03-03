@@ -17,7 +17,11 @@ export const Product: React.FC<PageProps> = ({ state, dispatch }): JSX.Element =
       <article className="Detail__info">
         <div className="Detail__info--header">
           <h2>{item.title}</h2>
-          <ButtonCTA />
+          <ButtonCTA
+            ItemId={item.id}
+            dispatch={dispatch}
+            added={item.added}
+          />
         </div>
 
         <div className="Detail__info--meta">
