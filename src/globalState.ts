@@ -1,4 +1,4 @@
-import { StateInterface, ActionType, ItemInterface, ChangeQuantityInterface } from "./globalTypes"
+import { StateInterface, ActionType, ItemInterface, ChangeQuantityInterface, RoutesInterface } from "./globalTypes"
 
 export const initialState = (): StateInterface => {
   return {
@@ -45,8 +45,8 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
         isSearching: !state.isSearching
       }
     case "MOVING":
-      state.current = payload as string;
-      state.history = payload === "/menu" ? "/" : "/menu"
+      state.current = (payload as RoutesInterface).current;
+      state.history = (payload as RoutesInterface).history
       return{ ...state }
 
     case "REMOVE":

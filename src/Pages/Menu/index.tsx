@@ -7,7 +7,10 @@ export const Menu: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
   const handleClick = () => {
     navigate("/shopping-cart")
-    dispatch && dispatch({ type: "MOVING", payload: "/shopping-cart" })
+    dispatch && dispatch({ 
+      type: "MOVING",
+      payload: {current: "/shopping-cart", history: "/menu"}
+    })
   }
 
   return(

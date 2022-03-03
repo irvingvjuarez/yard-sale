@@ -5,6 +5,7 @@ import { ButtonSmallProps } from "./types";
 export const ButtonSmall: React.FC<ButtonSmallProps> = ({ 
   source,
   to,
+  from,
   onclick,
   dependencies,
   isCTA,
@@ -15,7 +16,10 @@ export const ButtonSmall: React.FC<ButtonSmallProps> = ({
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     if(onclick) onclick(e)
     if(to){
-      dispatch && dispatch({ type: "MOVING", payload: to as string })
+      dispatch && dispatch({ 
+        type: "MOVING",
+        payload: {current: to as string, history: from as string}
+      })
       navigate(to)
     }
   }

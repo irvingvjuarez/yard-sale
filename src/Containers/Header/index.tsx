@@ -21,6 +21,10 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
   const navigate: NavigateFunction = useNavigate()
   const state = useContext(ctx)
   let { current, shoppingCart, history, isSearching, searching } = state
+
+  if(current === "/menu" && history === "/shopping-cart"){
+    history = "/"
+  }
   
   const searchDesktopRef = useRef<HTMLInputElement>(null)
   const handleSearch = (): void => dispatch({ type: "SEARCH" })
@@ -34,6 +38,9 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
       searchDesktopRef.current.focus()
     } 
   }, [searching])
+
+  console.log("Current:", current)
+  console.log("History:", history)
 
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
@@ -54,6 +61,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
 
             <ButtonSmall
               to="/menu"
+              from={window.location.pathname}
               dependencies={shoppingCart.length}
               source={Menu}
               dispatch={dispatch}
@@ -108,10 +116,11 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
 
   return (
     <header className="Header">
-      {current.length > 1 ? (
+      {(window.location.pathname === "/menu" || window.location.pathname === "/shopping-cart") ? (
         <React.Fragment>
           <ButtonSmall
             to={history}
+            from={window.location.pathname}
             source={ArrowLeft}
             isCTA={true}
             dispatch={dispatch}

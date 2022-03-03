@@ -5,6 +5,11 @@ export interface ChangeQuantityInterface{
   quantity: number
 }
 
+export interface RoutesInterface{
+  current: string;
+  history: string;
+}
+
 interface RatingInterface{
   rate: number;
   count: number;
@@ -43,6 +48,7 @@ export type ActionType = {
     | string 
     | number 
     | ChangeQuantityInterface
+    | RoutesInterface
 }
 
 export interface PageProps {
