@@ -75,17 +75,6 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
                     defaultValue={searching}
                   />
                 </div>
-
-                <button
-                  className="Header__cart"
-                  onClick={() => navigate("shopping-cart")}
-                >
-                  <span>Cart</span>
-                  <img src={Cart} alt="" />
-                  {(shoppingCart.length > 0) && (
-                    <span className="Header__cart--notification"></span>
-                  )}
-                </button>
               </Fragment>
             ) : (
               <Filter
@@ -95,6 +84,18 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
               />
             )}
 
+            {window.location.pathname !== "/shopping-cart" && (
+              <button
+                className="Header__cart"
+                onClick={() => navigate("shopping-cart")}
+              >
+                <span>Cart</span>
+                <img src={Cart} alt="" />
+                {(shoppingCart.length > 0) && (
+                  <span className="Header__cart--notification"></span>
+                )}
+              </button>
+            )}
           </nav>
         </React.Fragment>
       )
