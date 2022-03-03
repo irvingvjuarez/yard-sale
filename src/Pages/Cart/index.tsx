@@ -76,6 +76,11 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
                     history: "/checkout"
                   }
                 })
+
+                dispatch && dispatch({
+                  type: "AMOUNT",
+                  payload: totalAmount.total 
+                })
                 navigate("/checkout")
               }}
             />

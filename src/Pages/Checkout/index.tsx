@@ -9,7 +9,8 @@ import Linkedin from "../../Assets/Icons/linkedin.png";
 import Twitter from "../../Assets/Icons/twitter.png";
 import Github from "../../Assets/Icons/github.png";
 
-export const Checkout: React.FC<PageProps> = ({dispatch}): JSX.Element => {
+export const Checkout: React.FC<PageProps> = ({ state, dispatch}): JSX.Element => {
+  const { totalAmount } = state
   const navigate: NavigateFunction = useNavigate()
   const [localState, setLocalState] = useState<ILocalState>(initialLocalState)
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
@@ -105,7 +106,7 @@ export const Checkout: React.FC<PageProps> = ({dispatch}): JSX.Element => {
         </form>
 
         <button className="Checkout__cta" onClick={handleSubmit}>
-          <h2>Pay $XXXXX</h2>
+          <h2>Pay ${totalAmount}</h2>
         </button>
       </section>
 

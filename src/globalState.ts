@@ -11,6 +11,7 @@ export const initialState = (): StateInterface => {
     searching: "",
     isSearching: false,
     filterAt: "All items",
+    totalAmount: 0,
     error: false,
     loading: true
   }
@@ -31,6 +32,12 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
       return {
         ...state,
         shoppingCart: []
+      }
+
+    case "AMOUNT":
+      return{
+        ...state,
+        totalAmount: payload as number
       }
 
     case "CHANGE_QUANTITY":

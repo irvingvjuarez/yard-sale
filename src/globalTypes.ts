@@ -37,6 +37,7 @@ export interface StateInterface{
   history: string,
   isSearching: boolean,
   filterAt: string,
+  totalAmount: number,
   error: boolean,
   loading: boolean
 }
