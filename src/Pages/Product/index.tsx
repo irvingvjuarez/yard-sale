@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { ButtonCTA } from "../../Components/ButtonCTA"
 import { Rating } from "../../Components/Rating"
@@ -7,6 +8,10 @@ export const Product: React.FC<PageProps> = ({ state, dispatch }): JSX.Element =
   const { title } = useParams()
   const { items } = state
   const item: ItemInterface = items.find(index => index.title.trim() === title?.trim()) as ItemInterface
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return(
     <section className="Detail">
