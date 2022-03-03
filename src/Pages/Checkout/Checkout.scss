@@ -15,6 +15,7 @@
     height: 90px;
     background-color: $contrast-color;
     color: white;
+    border: none;
 
     h2{
       font-size: 1.5rem;
@@ -31,6 +32,13 @@
 
   &__error.error{
     color: red;
+  }
+
+  @media screen and (min-width: 700px){
+    &__form{
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+    }
   }
 }
 
