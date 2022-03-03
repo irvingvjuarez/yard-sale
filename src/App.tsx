@@ -53,7 +53,12 @@ function App(): JSX.Element {
                   dispatch={dispatch}
                 />
               }/>
-              <Route path='/products/:title' element={<Product />} />
+              <Route path='/products/:title' element={
+                <Product
+                  state={state as StateInterface}
+                  dispatch={dispatch}
+                />
+              }/>
             </Routes>
           </Layout>
         </BrowserRouter>

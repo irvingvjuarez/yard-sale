@@ -1,29 +1,32 @@
 import { useParams } from "react-router-dom"
 import { ButtonCTA } from "../../Components/ButtonCTA"
 import { Rating } from "../../Components/Rating"
+import { ItemInterface, PageProps } from "../../globalTypes"
 
-export const Product: React.FC = (): JSX.Element => {
+export const Product: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const { title } = useParams()
+  const { items } = state
+  const item: ItemInterface = items.find(index => index.title.trim() === title?.trim()) as ItemInterface
 
   return(
     <section className="Detail">
       <article className="Detail__thumbnail">
-        {/* <img src="" alt="" /> */}
+        <img src={item.image} alt="" />
       </article>
 
       <article className="Detail__info">
         <div className="Detail__info--header">
-          <h2>Article Name</h2>
+          <h2>{item.title}</h2>
           <ButtonCTA />
         </div>
 
         <div className="Detail__info--meta">
-          <span className="Detail__price">$XXXXX</span>
-          <Rating content={4.5} />
+          <span className="Detail__price">${item.price}</span>
+          <Rating content={item.rating.rate} />
         </div>
 
         <p className="Detail__info--description">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus maxime iure cupiditate dolor, accusamus laboriosam culpa. Commodi temporibus distinctio aliquid totam, voluptatem cum voluptas ad? Animi qui quam enim nihil.
+          {item.description}
         </p>
       </article>
     </section>

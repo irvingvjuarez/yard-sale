@@ -9,7 +9,6 @@
     place-content: center;
     width: 100%;
     height: auto;
-    border-radius: 9px;
     margin-bottom: 10px;
 
     img{
@@ -35,9 +34,6 @@
     }
 
     &--meta{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin-bottom: 10px;
 
       span{
@@ -54,7 +50,7 @@
 
   @media screen and (min-width: 700px){
     flex-direction: row;
-    height: 80vh;
+    max-height: 80vh;
 
     & > article{
       width: 50%;
@@ -64,6 +60,10 @@
 
     &__thumbnail{
       border-right: 1px solid $border-color;
+
+      img{
+        max-height: 75vh;
+      }
     }
   }
 }
