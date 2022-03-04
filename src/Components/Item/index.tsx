@@ -19,6 +19,9 @@ export const Item: React.FC<ItemProps> = ({
       type: "MOVING",
       payload: {current: `/products/${name}`, history: window.location.pathname}
     })
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 0)
     navigate(`/products/${name}`)
   }
 

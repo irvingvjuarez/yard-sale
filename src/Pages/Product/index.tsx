@@ -6,12 +6,12 @@ import { ItemInterface, PageProps } from "../../globalTypes"
 
 export const Product: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const { title } = useParams()
-  const { items } = state
+  const { items, searching } = state
   const item: ItemInterface = items.find(index => index.title.trim() === title?.trim()) as ItemInterface
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
+  // useEffect(() => {
+  //   window.scrollTo(0, 0)
+  // }, [searching])
 
   return(
     <section className="Detail">

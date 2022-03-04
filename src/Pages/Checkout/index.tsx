@@ -14,7 +14,13 @@ export const Checkout: React.FC<PageProps> = ({ state, dispatch}): JSX.Element =
   const errorRef = useRef<HTMLSpanElement>(null)
   const handleConfirmation = () => {
     setIsModalOpen(false)
-    dispatch && dispatch({ type: "RESET" })
+    if(dispatch){
+      dispatch({ type: "FILTER", payload: "All items" })
+      dispatch({ type: "RESET" })
+    }
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 0)
     navigate("/")
   }
 
