@@ -1,4 +1,3 @@
-import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { ButtonCTA } from "../../Components/ButtonCTA"
 import { Rating } from "../../Components/Rating"
@@ -6,7 +5,7 @@ import { ItemInterface, PageProps } from "../../globalTypes"
 
 export const Product: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const { title } = useParams()
-  const { items, searching } = state
+  const { items } = state
   const item: ItemInterface = items.find(index => index.title.trim() === title?.trim()) as ItemInterface
 
   // useEffect(() => {
