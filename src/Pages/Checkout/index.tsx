@@ -2,12 +2,9 @@ import { Fragment, useRef, useState } from "react";
 import { useNavigate, NavigateFunction } from "react-router-dom"
 import { CheckoutInput } from "../../Components/CheckoutInput";
 import { ButtonCTA } from "../../Components/ButtonCTA";
+import { SocialMedia } from "../../Containers/SocialMedia";
 import { ILocalState, initialLocalState } from "./types";
 import { PageProps } from "../../globalTypes";
-
-import Linkedin from "../../Assets/Icons/linkedin.png";
-import Twitter from "../../Assets/Icons/twitter.png";
-import Github from "../../Assets/Icons/github.png";
 
 export const Checkout: React.FC<PageProps> = ({ state, dispatch}): JSX.Element => {
   const { totalAmount } = state
@@ -118,25 +115,7 @@ export const Checkout: React.FC<PageProps> = ({ state, dispatch}): JSX.Element =
               Follow me on my social media to know more about my work
             </h2>
             <div className="Modal__card--footer">
-              <ul>
-                <li>
-                  <a href="https://twitter.com/juarez1_irving">
-                    <img src={Twitter} alt="twitter" />
-                  </a>
-                </li>
-
-                <li>
-                  <a href="https://github.com/IrvingJuarez">
-                  <img src={Github} alt="github" />
-                  </a>
-                </li>
-
-                <li>
-                  <a href="https://www.linkedin.com/in/irvingdevjuarez/">
-                  <img src={Linkedin} alt="linkedin" />
-                  </a>
-                </li>
-              </ul>
+              <SocialMedia />
 
               <ButtonCTA content="OK" onclick={handleConfirmation} />
             </div>

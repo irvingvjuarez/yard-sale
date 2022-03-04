@@ -79,17 +79,6 @@
     &--footer{
       display: grid;
       grid-template-columns: 70% 30%;
-
-      ul{
-        display: flex;
-        align-items: center;
-        justify-content: space-evenly;
-        list-style: none;
-      }
-
-      img{
-        width: 30px;
-      }
     }
 
   }

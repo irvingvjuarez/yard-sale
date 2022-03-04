@@ -43,4 +43,14 @@
     font-size: 1.1rem;
     margin-right: 5px;
   }
+
+  &__footer{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding-block: 20px;
+    border-top: 1px solid $border-color;
+  }
 }
