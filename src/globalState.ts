@@ -44,7 +44,7 @@ export function reducer(state: StateInterface, action: ActionType): StateInterfa
       index = state.shoppingCart.findIndex(
         item => item.id === (payload as ChangeQuantityInterface).id
       )
-      newShoppingCart = state.shoppingCart
+      newShoppingCart = [...state.shoppingCart]
       newShoppingCart[index].quantity = (payload as ChangeQuantityInterface).quantity
 
       return {

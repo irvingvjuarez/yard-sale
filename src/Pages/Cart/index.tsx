@@ -11,6 +11,7 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
   const [totalAmount, setTotalAmount] = React.useState<ITotalAmount>(totalAmountInitial)
 
   React.useEffect(() => {
+
     if(shoppingCart.length) {
       let subtotal = 0;
       let taxes = 0;
