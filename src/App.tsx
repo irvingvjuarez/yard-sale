@@ -6,6 +6,7 @@ import { Menu } from "./Pages/Menu";
 import { Cart } from "./Pages/Cart";
 import { Product } from './Pages/Product';
 import { Checkout } from './Pages/Checkout';
+import { Ctx } from "./Context";
 
 // utils
 import { initialState, reducer } from "./globalState";
@@ -17,7 +18,7 @@ import { StateInterface } from './globalTypes';
 
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
-  const Context = createContext(state)
+  // const Context = createContext(state)
 
   React.useEffect(() => {
     try{
@@ -30,16 +31,16 @@ function App(): JSX.Element {
   }, [])
 
   return (
-    <Context.Provider value={state}>
+    <Ctx.Provider value={state}>
       <section className="App">
         <BrowserRouter>
-          <Layout dispatch={dispatch} ctx={Context}>
+          <Layout dispatch={dispatch}>
             <Routes>
               <Route path="/" element={
                 <Home
                   state={state as StateInterface}
                   dispatch={dispatch}
-                  ctx={Context}
+                  ctx={Ctx}
                 />
               }/>
               <Route path="/menu" element={
@@ -71,7 +72,7 @@ function App(): JSX.Element {
           </Layout>
         </BrowserRouter>
       </section>
-    </Context.Provider>
+    </Ctx.Provider>
   );
 }
 

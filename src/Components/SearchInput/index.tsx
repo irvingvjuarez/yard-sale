@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 
 import Search from "../../Assets/Icons/search.png";
+import { Ctx } from "../../Context";
 import { SearchInputInterface } from "./types";
 
-export const SearchInput: React.FC<SearchInputInterface> = ({dispatch, ctx}): JSX.Element => {
-  const state = useContext(ctx)
+export const SearchInput: React.FC<SearchInputInterface> = ({ dispatch }): JSX.Element => {
+  const state = useContext(Ctx)
   const { searching } = state
   const inputRef = React.useRef<HTMLInputElement>(null)
   const handleBlur = (): void => dispatch({ type: "SEARCH" })

@@ -1,15 +1,15 @@
 import { useContext } from "react"
 import { NavigateFunction, useNavigate } from "react-router-dom"
+import { Ctx } from "../../Context"
 import { ButtonCategoryProps } from "./types"
 
 export const ButtonCategory: React.FC<ButtonCategoryProps> = ({
   content,
   dispatch,
-  ctx,
   to
   }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
-  const state = useContext(ctx)
+  const state = useContext(Ctx)
   const { filterAt, searching } = state
   const handleClick = () => {
     if(to) navigate(to)

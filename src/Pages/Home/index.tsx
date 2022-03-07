@@ -12,8 +12,7 @@ export const Home: React.FC<PageProps> = ({ state, dispatch, ctx }): JSX.Element
       return(
         <React.Fragment>
           <Filter
-            dispatch={dispatch as React.Dispatch<ActionType>} 
-            ctx={ctx as React.Context<StateInterface>}
+            dispatch={dispatch as React.Dispatch<ActionType>}
           />
 
           <section className="Home__items">
@@ -38,8 +37,7 @@ export const Home: React.FC<PageProps> = ({ state, dispatch, ctx }): JSX.Element
         return(
           <React.Fragment>
             <Filter
-              dispatch={dispatch as React.Dispatch<ActionType>} 
-              ctx={ctx as React.Context<StateInterface>}
+              dispatch={dispatch as React.Dispatch<ActionType>}
             />
             <span className="Home__no-found">No items found</span>
           </React.Fragment>

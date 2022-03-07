@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { FilterProps } from "./types";
 import { ButtonCategory } from "../../Components/ButtonCategory";
+import { Ctx } from "../../Context";
 
-export const Filter: React.FC<FilterProps> = ({ dispatch, ctx, isInHeader }): JSX.Element => {
-  const state = useContext(ctx)
+export const Filter: React.FC<FilterProps> = ({ dispatch, isInHeader }): JSX.Element => {
+  const state = useContext(Ctx)
   const { categories, filterAt, searching } = state
   const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: "FILTER", payload: e.target.value })
@@ -24,7 +25,6 @@ export const Filter: React.FC<FilterProps> = ({ dispatch, ctx, isInHeader }): JS
           key={category}
           content={category}
           dispatch={dispatch}
-          ctx={ctx}
           to={isInHeader ? "/" : ""}
         />
       ))}

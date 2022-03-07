@@ -16,10 +16,11 @@ import { ButtonSmall } from "../../Components/ButtonSmall";
 import { locationRegex } from "../../constants";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import { Filter } from "../Filter";
+import { Ctx } from "../../Context";
 
-export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element => {
+export const Header: React.FC<HeaderProps> = ({ dispatch }): JSX.Element => {
   const navigate: NavigateFunction = useNavigate()
-  const state = useContext(ctx)
+  const state = useContext(Ctx)
   let { current, shoppingCart, history, isSearching, searching } = state
 
   if(current === "/menu" && history === "/shopping-cart"){
@@ -48,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
   const renderMainHeader = (): JSX.Element => {
     if(isSearching){
       return(
-        <SearchInput dispatch={dispatch} ctx={ctx}/>
+        <SearchInput dispatch={dispatch} />
       )
     }else{
       return(
@@ -103,7 +104,6 @@ export const Header: React.FC<HeaderProps> = ({ dispatch, ctx }): JSX.Element =>
               <div className="Header__desktop--filter">
                 <Filter
                   dispatch={dispatch}
-                  ctx={ctx}
                   isInHeader={true}
                 />
               </div>

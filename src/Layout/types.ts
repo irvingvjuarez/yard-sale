@@ -3,6 +3,5 @@ import { ActionType, StateInterface } from "../globalTypes";
 
 export interface LayoutProps {
   children: JSX.Element,
-  dispatch: React.Dispatch<ActionType>,
-  ctx: React.Context<StateInterface>
+  dispatch: React.Dispatch<ActionType>
 }
