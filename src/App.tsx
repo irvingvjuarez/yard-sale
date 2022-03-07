@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from 'react';
+import React, { useReducer } from 'react';
 import { Layout } from "./Layout";
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import { Home } from "./Pages/Home";
@@ -18,7 +18,6 @@ import { StateInterface } from './globalTypes';
 
 function App(): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState())
-  // const Context = createContext(state)
 
   React.useEffect(() => {
     try{
