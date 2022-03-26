@@ -1,7 +1,7 @@
 ![icon](./public/logo192.png)
 # Shopping Cart
 
-Emulating a e-commerce app flow
+Emulating an e-commerce app flow
 
 ## Table of contents
 - Overview
