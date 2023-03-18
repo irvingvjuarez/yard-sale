@@ -20,8 +20,9 @@ export const Cart: React.FC<PageProps> = ({ state, dispatch }): JSX.Element => {
       shoppingCart.forEach(product => {
         subtotal += product.price * (product.quantity as number)
         taxes += subtotal * 0.16;
-        total = subtotal + taxes;
       })
+
+      total = subtotal + taxes;
 
       setTotalAmount({
         subtotal: Number(subtotal.toFixed(2)),
